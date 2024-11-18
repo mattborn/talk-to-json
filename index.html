@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to JSON</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="controls">
+        <select id="transcriptionService">
+            <option value="webSpeech">Web Speech API</option>
+            <option value="whisper">OpenAI Whisper</option>
+            <option value="assembly">Assembly AI</option>
+        </select>
+        <button id="startButton">Start Recording</button>
+    </div>
+    <div id="transcriptions"></div>
+    <script src="scripts.js"></script>
+</body>
+</html>
