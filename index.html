@@ -13,9 +13,28 @@
             <option value="whisper">OpenAI Whisper</option>
             <option value="assembly">Assembly AI</option>
         </select>
+        <select id="llmService">
+            <option value="gpt4">GPT-4 (OpenAI)</option>
+            <option value="claude">Claude 3.5 Sonnet (Anthropic)</option>
+            <option value="gemini">Gemini 1.5 Pro (Google)</option>
+            <option value="llama">Llama 3.2 (Meta)</option>
+        </select>
         <button id="startButton">Start Recording</button>
     </div>
-    <div id="transcriptions"></div>
+    <div class="content">
+        <div id="transcriptions"></div>
+        <div id="jsonPreview">
+            <pre>{
+    "type": "conversation",
+    "content": [
+        {
+            "role": "user",
+            "text": "Your transcribed text will appear here..."
+        }
+    ]
+}</pre>
+        </div>
+    </div>
     <script src="scripts.js"></script>
 </body>
 </html>
