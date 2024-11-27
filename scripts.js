@@ -194,7 +194,6 @@ startButton.addEventListener('click', async () => {
     const transcription = await handleTranscription()
     if (transcription) {
       saveTranscription(transcription)
-      await simulateJsonUpdate()
     }
     currentTranscript = ''
     const interimDiv = document.querySelector('.transcription.interim')

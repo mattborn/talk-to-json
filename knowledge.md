@@ -1,5 +1,7 @@
 # Talk-to-JSON
 
+[previous sections remain unchanged...]
+
 ## API Integration
 - Use `/openai` endpoint instead of `/gpt4` to avoid CORS issues
 - Base URL: `https://us-central1-samantha-374622.cloudfunctions.net`
@@ -16,14 +18,10 @@
     // Now use json...
   })
   ```
-- Reference implementation in ref/memer/openai.js
-- Always check for working examples in codebase before creating new implementations
-- Response handling pattern:
-  ```js
-  gpt4(messages).then(text => {
-    const json = toJSON(text)
-    // Now use json...
-  })
-  ```
+- Avoid duplicate API calls:
+  - Only one component should handle API calls for a given state change
+  - Use simulateJsonUpdate for preview-only updates
+  - Use saveTranscription for persistence + preview updates
+  - Never call both for the same state change
 
 [rest of file remains unchanged...]
