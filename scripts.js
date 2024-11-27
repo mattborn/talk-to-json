@@ -98,6 +98,7 @@ function addTranscriptionToPage(text) {
   deleteBtn.innerHTML = '🗑️'
   deleteBtn.className = 'delete-btn'
   deleteBtn.onclick = async () => {
+    document.getElementById('jsonPreview').classList.add('loading')
     div.remove()
     // Update localStorage
     const transcriptions = JSON.parse(localStorage.getItem('transcriptions') || '[]')
@@ -127,6 +128,7 @@ async function simulateJsonUpdate() {
 }
 
 async function saveTranscription(transcriptionText) {
+  document.getElementById('jsonPreview').classList.add('loading')
   const transcriptions = JSON.parse(localStorage.getItem('transcriptions') || '[]')
   transcriptions.unshift(transcriptionText)
   localStorage.setItem('transcriptions', JSON.stringify(transcriptions))

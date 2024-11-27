@@ -25,3 +25,15 @@
   - Never call both for the same state change
 
 [rest of file remains unchanged...]
+
+## Development Guidelines
+- Start with core functionality only (Web Speech API + GPT4)
+- Avoid premature addition of alternative services
+- Add complexity only when core features are stable
+- Focus on reliability of primary user path before adding options
+
+## UI Patterns
+- Show loading states immediately before starting async work
+- Use same loading pattern for all async operations (recording stop, deletion)
+- Loading animations should indicate work in progress, not completion
+- Apply loading state to container before making API calls
