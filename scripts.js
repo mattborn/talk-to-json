@@ -209,3 +209,15 @@ recognition.onend = () => {
     recognition.start()
   }
 }
+
+// Reset functionality
+document.getElementById('resetButton').addEventListener('click', () => {
+  // Clear transcriptions
+  document.getElementById('transcriptions').innerHTML = ''
+  localStorage.removeItem('transcriptions')
+  
+  // Reset JSON preview to default schema
+  const defaultSchema = schemas.default.schema
+  document.querySelector('#jsonPreview code').textContent = JSON.stringify(defaultSchema, null, 4)
+  Prism.highlightElement(document.querySelector('#jsonPreview code'))
+})
