@@ -96,7 +96,7 @@ function addTranscriptionToPage(text) {
 
   const deleteBtn = document.createElement('span')
   deleteBtn.innerHTML = '🗑️'
-  deleteBtn.className = 'delete-btn'
+  deleteBtn.className = 'delete-btn'    
   deleteBtn.onclick = async () => {
     document.getElementById('jsonPreview').classList.add('loading')
     div.remove()
@@ -107,6 +107,8 @@ function addTranscriptionToPage(text) {
       transcriptions.splice(index, 1)
       localStorage.setItem('transcriptions', JSON.stringify(transcriptions))
     }
+    // Reset session before updating JSON
+    initializeSessionStream()
     await simulateJsonUpdate()
   }
 
@@ -118,6 +120,21 @@ function addTranscriptionToPage(text) {
 async function simulateJsonUpdate() {
   const jsonPreview = document.getElementById('jsonPreview')
   jsonPreview.classList.add('loading')
+
+  // Get all transcriptions for context
+  const allTranscriptions = document.querySelectorAll('.transcription:not(.interim)')
+  const transcriptionTexts = Array.from(allTranscriptions).map(div => 
+    div.querySelector('span').textContent
+  )
+
+  // Add all transcriptions as context
+  const schemaKey = document.querySelector('input[name="schema"]:checked').value
+  const schema = schemas[schemaKey]
+  sessionStream.push({
+    role: 'user',
+    content: `Return a single JSON object copying this schema: ${JSON.stringify(schema.schema)} and use the values as hints for what to generate from this text: "${transcriptionTexts.join(' ')}"`,
+  })
+
   const text = await gpt4(sessionStream)
   if (text) {
     const json = toJSON(text)
