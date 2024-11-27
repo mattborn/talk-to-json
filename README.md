@@ -9,8 +9,8 @@ Structure, String center… Stricter?
 
 ## TODO
 
-- [ ] microphone
-- [ ] transcribe
+- [x] microphone
+- [x] transcribe
 - [ ] format JSON
 - [ ] save / git / diff / version
 - [ ] iterate

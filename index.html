@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Talk to JSON</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="controls">
-        <select id="transcriptionService">
-            <option value="webSpeech">Web Speech API</option>
-            <option value="whisper">OpenAI Whisper</option>
-            <option value="assembly">Assembly AI</option>
-        </select>
-        <select id="llmService">
-            <option value="gpt4">GPT-4 (OpenAI)</option>
-            <option value="claude">Claude 3.5 Sonnet (Anthropic)</option>
-            <option value="gemini">Gemini 1.5 Pro (Google)</option>
-            <option value="llama">Llama 3.2 (Meta)</option>
-        </select>
-        <button id="startButton">Start Recording</button>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-material-oceanic.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  </head>
+  <body>
+    <div class="menu">
+      <button id="startButton">Start Recording</button>
+
+      <div class="menu-section">
+        <h3>Transcription</h3>
+        <div class="radio-cards">
+          <label class="radio-card active">
+            <input type="radio" name="transcription" value="webSpeech" checked />
+            <span>Web Speech API</span>
+          </label>
+          <label class="radio-card disabled">
+            <input type="radio" name="transcription" value="whisper" disabled />
+            <span>OpenAI Whisper</span>
+          </label>
+          <label class="radio-card disabled">
+            <input type="radio" name="transcription" value="assembly" disabled />
+            <span>Assembly AI</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Model</h3>
+        <div class="radio-cards">
+          <label class="radio-card active">
+            <input type="radio" name="model" value="gpt4" checked />
+            <span>GPT-4</span>
+          </label>
+          <label class="radio-card disabled">
+            <input type="radio" name="model" value="claude" disabled />
+            <span>Claude</span>
+          </label>
+          <label class="radio-card disabled">
+            <input type="radio" name="model" value="gemini" disabled />
+            <span>Gemini</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Schema</h3>
+        <div id="schemaCards" class="radio-cards">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
     </div>
-    <div class="content">
-        <div id="transcriptions"></div>
-        <div id="jsonPreview">
-            <pre>{
+    <div id="transcriptions"></div>
+    <div id="jsonPreview">
+      <pre><code class="language-json">{
     "type": "conversation",
     "content": [
         {
@@ -32,9 +69,8 @@
             "text": "Your transcribed text will appear here..."
         }
     ]
-}</pre>
-        </div>
+}</code></pre>
     </div>
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "default": {
+    "name": "Default",
+    "schema": {
+      "title": "succinct title",
+      "summary": "succinct summary"
+    }
+  }
+}
