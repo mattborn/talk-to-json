@@ -1,7 +1,8 @@
 {
-  "title": "Talk-to-JSON",
   "description": "Transcription appears as JSON in real-time.",
   "image": "",
-  "tags": ["Primitive", "Next"],
+  "repo": "mattborn/",
+  "tags": ["Next"],
+  "title": "Talk-to-JSON 🟢",
   "urls": ["talkjson.com"]
 }
