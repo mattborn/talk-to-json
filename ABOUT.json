@@ -1,8 +1,14 @@
 {
+  "deps": [],
   "description": "Transcription appears as JSON in real-time.",
   "image": "",
   "repo": "mattborn/",
-  "tags": ["Next"],
+  "tags": [
+    "Limbo",
+    "OSS"
+  ],
   "title": "Talk-to-JSON 🟢",
-  "urls": ["talkjson.com"]
+  "urls": [
+    "talkjson.com"
+  ]
 }
